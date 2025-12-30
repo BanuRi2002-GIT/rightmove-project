@@ -5,7 +5,6 @@ import './Header.css';
 function Header ()  {
   return (
     <header className="header">
-        <img src="/assets/images/Logo.png" alt="" />
         <h1>Rightmove</h1>  
       <nav>
         <ul>
