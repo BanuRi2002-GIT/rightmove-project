@@ -9,7 +9,7 @@
 
 .search-form h2 {
   font-size: 2rem;
-  color: #1f1235;
+  color: #49464f;
   margin-bottom: 2rem;
   text-align: left;
   font-weight: 700;
@@ -24,7 +24,7 @@
 
 .form-group label {
   font-weight: 600;
-  color: #64748b;
+  color: #454e5b;
   margin-bottom: 0.5rem;
   font-size: 0.95rem;
 }
@@ -49,7 +49,7 @@
 }
 
 .react-select__control--is-focused {
-  border-color: #47e4f0 !important;
+  border-color: #905ea4 !important;
   box-shadow: 0 0 0 3px rgba(71, 228, 240, 0.1) !important;
 }
 
@@ -135,7 +135,7 @@
 
 .react-datepicker__current-month,
 .react-datepicker__day-name {
-  color: #47e4f0;
+  color: #805088;
 }
 
 .react-datepicker__day {
@@ -149,7 +149,7 @@
 
 .react-datepicker__day--selected,
 .react-datepicker__day--keyboard-selected {
-  background-color: #47e4f0;
+  background-color: #7d427c;
   color: #1f1235;
   border-radius: 0.25rem;
 }
@@ -172,7 +172,7 @@
 
 .postcode-input:focus {
   outline: none;
-  border-color: #47e4f0;
+  border-color: #69416c;
   box-shadow: 0 0 0 3px rgba(71, 228, 240, 0.1);
 }
 
@@ -205,7 +205,7 @@
 
 .btn-primary {
   background-color: #1f1235;
-  color: #47e4f0;
+  color: #5b3369;
 }
 
 .btn-primary:hover {
