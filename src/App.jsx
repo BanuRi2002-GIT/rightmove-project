@@ -93,11 +93,125 @@
 // export default App;
 
 
+// import React from 'react';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import Header from './components/Header';
+// import Footer from './components/Footer';
+// import SearchForm from './components/SearchForm';
+// import './App.css';
+
+// // Home page showing only the search form
+// const Home = () => (
+//   <div className="home-page">
+//     <SearchForm />
+//   </div>
+// );
+
+// function App() {
+//   return (
+//     <Router>
+//       <Header />
+//       <Routes>
+//         <Route path="/" element={<Home />} />
+//       </Routes>
+//       <Footer />
+//     </Router>
+//   );
+// }
+
+// export default App;
+
+// import React, { useState } from 'react';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import Header from './components/Header';
+// import Footer from './components/Footer';
+// import SearchForm from './components/SearchForm';
+// import PropertiesList from './components/propertiesList';
+// import './App.css';
+
+// // Home page showing search + properties list
+// const Home = ({ onAddToFavourites }) => (
+//   <div className="home-page">
+//     <SearchForm />
+//     <PropertiesList onAddToFavourites={onAddToFavourites} />
+//   </div>
+// );
+
+// function App() {
+//   const [favourites, setFavourites] = useState([]);
+
+//   const handleAddToFavourites = (property) => {
+//     setFavourites((prev) =>
+//       prev.find((p) => p.id === property.id)
+//         ? prev
+//         : [...prev, property]
+//     );
+//   };
+
+//   return (
+//     <Router>
+//       <Header />
+
+//       <Routes>
+//         <Route
+//           path="/"
+//           element={<Home onAddToFavourites={handleAddToFavourites} />}
+//         />
+//       </Routes>
+
+//       <Footer />
+//     </Router>
+//   );
+// }
+
+// export default App;
+
+// import React from 'react';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import Header from './components/Header';
+// import Footer from './components/Footer';
+// import SearchForm from './components/SearchForm';
+// import PropertyDetails from './components/propertyDetails';
+// import './App.css';
+
+// // Home page showing only the search form
+// const Home = () => (
+//   <div className="home-page">
+//     <SearchForm />
+//   </div>
+// );
+
+// function App() {
+//   const handleAddToFavourites = (property) => {
+//     console.log('Added to favourites:', property);
+//   };
+
+//   return (
+//     <Router>
+//       <Header />
+//       <Routes>
+//         <Route path="/" element={<Home />} />
+//         <Route
+//           path="/property/:id"
+//           element={
+//             <PropertyDetails onAddToFavourites={handleAddToFavourites} />
+//           }
+//         />
+//       </Routes>
+//       <Footer />
+//     </Router>
+//   );
+// }
+
+// export default App;
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import SearchForm from './components/SearchForm';
+import PropertiesList from './components/PropertiesList';
+import PropertyDetails from './components/PropertyDetails';
 import './App.css';
 
 // Home page showing only the search form
@@ -108,11 +222,29 @@ const Home = () => (
 );
 
 function App() {
+  const handleAddToFavourites = (property) => {
+    console.log('Added to favourites:', property);
+  };
+
   return (
     <Router>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+
+        <Route
+          path="/property-list"
+          element={
+            <PropertiesList onAddToFavourites={handleAddToFavourites} />
+          }
+        />
+
+        <Route
+          path="/property/:id"
+          element={
+            <PropertyDetails onAddToFavourites={handleAddToFavourites} />
+          }
+        />
       </Routes>
       <Footer />
     </Router>
