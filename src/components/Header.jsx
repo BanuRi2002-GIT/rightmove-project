@@ -5,7 +5,14 @@ import './Header.css';
 function Header ()  {
   return (
     <header className="header">
-        <h1>Rightmove</h1>  
+      <div className="logo-container">
+        <img src="/Images/NestifyLogo.png" alt="Logo" className="logo" />
+      
+      
+        <h1>Nestify</h1>
+      </div>
+      
+      
       <nav>
         <ul>
           <li><Link to="/">Property Search</Link></li>
