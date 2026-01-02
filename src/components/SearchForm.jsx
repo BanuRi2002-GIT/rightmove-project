@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Select from 'react-select';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './SearchForm.css';
 
@@ -11,22 +10,27 @@ function SearchForm({ onSearch }) {
     maxPrice: null,
     minBedrooms: null,
     maxBedrooms: null,
-    dateFrom: null,
-    dateTo: null,
     postcode: ''
   });
 
-  const [hasError, setHasError] = useState(false);
+  const [errors, setErrors] = useState({
+    type: false,
+    minPrice: false,
+    maxPrice: false,
+    minBedrooms: false,
+    maxBedrooms: false,
+    postcode: false
+  });
+
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   // Options for React Select dropdowns
   const typeOptions = [
-    { value: '', label: 'Any' },
     { value: 'House', label: 'House' },
     { value: 'Flat', label: 'Flat' }
   ];
 
   const priceOptions = [
-    { value: '', label: 'No min' },
     { value: 200000, label: '£200,000' },
     { value: 300000, label: '£300,000' },
     { value: 400000, label: '£400,000' },
@@ -36,17 +40,16 @@ function SearchForm({ onSearch }) {
   ];
 
   const maxPriceOptions = [
-    { value: '', label: 'No max' },
     { value: 300000, label: '£300,000' },
     { value: 400000, label: '£400,000' },
     { value: 500000, label: '£500,000' },
     { value: 750000, label: '£750,000' },
     { value: 1000000, label: '£1,000,000' },
-    { value: 1500000, label: '£1,500,000' }
+    { value: 1500000, label: '£1,500,000' },
+    { value: 2000000, label: '£2,000,000' }
   ];
 
   const bedroomOptions = [
-    { value: '', label: 'Any' },
     { value: 1, label: '1' },
     { value: 2, label: '2' },
     { value: 3, label: '3' },
@@ -54,41 +57,39 @@ function SearchForm({ onSearch }) {
     { value: 5, label: '5+' }
   ];
 
-  // Check if at least one field has a value
-  const hasAnyValue = () => {
-    return (
-      (formData.type && formData.type.value !== '') ||
-      (formData.minPrice && formData.minPrice.value !== '') ||
-      (formData.maxPrice && formData.maxPrice.value !== '') ||
-      (formData.minBedrooms && formData.minBedrooms.value !== '') ||
-      (formData.maxBedrooms && formData.maxBedrooms.value !== '') ||
-      formData.dateFrom ||
-      formData.dateTo ||
-      formData.postcode.trim() !== ''
-    );
+  // Validate all required fields
+  const validateForm = () => {
+    const newErrors = {
+      type: !formData.type || !formData.type.value,
+      minPrice: !formData.minPrice || !formData.minPrice.value,
+      maxPrice: !formData.maxPrice || !formData.maxPrice.value,
+      minBedrooms: !formData.minBedrooms || !formData.minBedrooms.value,
+      maxBedrooms: !formData.maxBedrooms || !formData.maxBedrooms.value,
+      postcode: formData.postcode.trim() === ''
+    };
+
+    setErrors(newErrors);
+    
+    // Return true if no errors
+    return !Object.values(newErrors).some(error => error);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setHasSubmitted(true);
     
-    // Validate that at least one field is filled
-    if (!hasAnyValue()) {
-      setHasError(true);
+    // Validate form
+    if (!validateForm()) {
       return;
     }
 
-    // Clear error and proceed with search
-    setHasError(false);
-    
     // Convert form data to search criteria
     const criteria = {
-      type: formData.type?.value || '',
-      minPrice: formData.minPrice?.value || '',
-      maxPrice: formData.maxPrice?.value || '',
-      minBedrooms: formData.minBedrooms?.value || '',
-      maxBedrooms: formData.maxBedrooms?.value || '',
-      dateFrom: formData.dateFrom,
-      dateTo: formData.dateTo,
+      type: formData.type.value,
+      minPrice: formData.minPrice.value,
+      maxPrice: formData.maxPrice.value,
+      minBedrooms: formData.minBedrooms.value,
+      maxBedrooms: formData.maxBedrooms.value,
       postcode: formData.postcode
     };
 
@@ -102,39 +103,35 @@ function SearchForm({ onSearch }) {
       maxPrice: null,
       minBedrooms: null,
       maxBedrooms: null,
-      dateFrom: null,
-      dateTo: null,
       postcode: ''
     });
-    setHasError(false);
-    onSearch({
-      type: '',
-      minPrice: '',
-      maxPrice: '',
-      minBedrooms: '',
-      maxBedrooms: '',
-      dateFrom: null,
-      dateTo: null,
-      postcode: ''
+    setErrors({
+      type: false,
+      minPrice: false,
+      maxPrice: false,
+      minBedrooms: false,
+      maxBedrooms: false,
+      postcode: false
     });
+    setHasSubmitted(false);
   };
 
-  // Clear error when user makes any change
+  // Clear error when user makes a change
   const handleChange = (field, value) => {
     setFormData({ ...formData, [field]: value });
-    if (hasError) {
-      setHasError(false);
+    if (hasSubmitted) {
+      setErrors({ ...errors, [field]: false });
     }
   };
 
   // Custom styles for error state
-  const getSelectStyles = (hasError) => ({
+  const getSelectStyles = (fieldName) => ({
     control: (base, state) => ({
       ...base,
-      borderColor: hasError && !hasAnyValue() ? '#ef4444' : state.isFocused ? '#905ea4' : '#e2e8f0',
+      borderColor: errors[fieldName] ? '#ef4444' : state.isFocused ? '#5ea483' : '#e2e8f0',
       borderWidth: '2px',
       '&:hover': {
-        borderColor: hasError && !hasAnyValue() ? '#ef4444' : '#cbd5e1'
+        borderColor: errors[fieldName] ? '#ef4444' : '#cbd5e1'
       }
     })
   });
@@ -143,123 +140,107 @@ function SearchForm({ onSearch }) {
     <form className="search-form" onSubmit={handleSubmit}>
       <h2>Search Properties</h2>
       
-      {hasError && (
+      {hasSubmitted && Object.values(errors).some(error => error) && (
         <div className="error-message">
-          Please fill in at least one search criterion
+          Please fill in all required fields to search for properties
         </div>
       )}
       
       <div className="form-group">
-        <label htmlFor="type">Property Type:</label>
+        <label htmlFor="type">
+          Property Type: <span className="required-asterisk">*</span>
+        </label>
         <Select
           id="type"
           options={typeOptions}
           value={formData.type}
           onChange={(option) => handleChange('type', option)}
-          placeholder="Select type..."
+          placeholder="Select property type..."
           className="react-select-container"
           classNamePrefix="react-select"
-          styles={getSelectStyles(hasError)}
+          styles={getSelectStyles('type')}
         />
       </div>
 
       <div className="form-row">
         <div className="form-group">
-          <label htmlFor="minPrice">Min Price:</label>
+          <label htmlFor="minPrice">
+            Min Price: <span className="required-asterisk">*</span>
+          </label>
           <Select
             id="minPrice"
             options={priceOptions}
             value={formData.minPrice}
             onChange={(option) => handleChange('minPrice', option)}
-            placeholder="No min"
+            placeholder="Select minimum price..."
             className="react-select-container"
             classNamePrefix="react-select"
-            styles={getSelectStyles(hasError)}
+            styles={getSelectStyles('minPrice')}
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="maxPrice">Max Price:</label>
+          <label htmlFor="maxPrice">
+            Max Price: <span className="required-asterisk">*</span>
+          </label>
           <Select
             id="maxPrice"
             options={maxPriceOptions}
             value={formData.maxPrice}
             onChange={(option) => handleChange('maxPrice', option)}
-            placeholder="No max"
+            placeholder="Select maximum price..."
             className="react-select-container"
             classNamePrefix="react-select"
-            styles={getSelectStyles(hasError)}
+            styles={getSelectStyles('maxPrice')}
           />
         </div>
       </div>
 
       <div className="form-row">
         <div className="form-group">
-          <label htmlFor="minBedrooms">Min Bedrooms:</label>
+          <label htmlFor="minBedrooms">
+            Min Bedrooms: <span className="required-asterisk">*</span>
+          </label>
           <Select
             id="minBedrooms"
             options={bedroomOptions}
             value={formData.minBedrooms}
             onChange={(option) => handleChange('minBedrooms', option)}
-            placeholder="Any"
+            placeholder="Select minimum bedrooms..."
             className="react-select-container"
             classNamePrefix="react-select"
-            styles={getSelectStyles(hasError)}
+            styles={getSelectStyles('minBedrooms')}
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="maxBedrooms">Max Bedrooms:</label>
+          <label htmlFor="maxBedrooms">
+            Max Bedrooms: <span className="required-asterisk">*</span>
+          </label>
           <Select
             id="maxBedrooms"
             options={bedroomOptions}
             value={formData.maxBedrooms}
             onChange={(option) => handleChange('maxBedrooms', option)}
-            placeholder="Any"
+            placeholder="Select maximum bedrooms..."
             className="react-select-container"
             classNamePrefix="react-select"
-            styles={getSelectStyles(hasError)}
-          />
-        </div>
-      </div>
-
-      <div className="form-row">
-        <div className="form-group">
-          <label htmlFor="dateFrom">Added After:</label>
-          <DatePicker
-            id="dateFrom"
-            selected={formData.dateFrom}
-            onChange={(date) => handleChange('dateFrom', date)}
-            dateFormat="dd/MM/yyyy"
-            placeholderText="Select date..."
-            className={`date-picker ${hasError && !hasAnyValue() ? 'date-picker-error' : ''}`}
-            isClearable
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="dateTo">Added Before:</label>
-          <DatePicker
-            id="dateTo"
-            selected={formData.dateTo}
-            onChange={(date) => handleChange('dateTo', date)}
-            dateFormat="dd/MM/yyyy"
-            placeholderText="Select date..."
-            className={`date-picker ${hasError && !hasAnyValue() ? 'date-picker-error' : ''}`}
-            isClearable
+            styles={getSelectStyles('maxBedrooms')}
           />
         </div>
       </div>
 
       <div className="form-group">
-        <label htmlFor="postcode">Postcode Area:</label>
+        <label htmlFor="postcode">
+          Postcode Area: <span className="required-asterisk">*</span>
+        </label>
         <input
           type="text"
           id="postcode"
           value={formData.postcode}
           onChange={(e) => handleChange('postcode', e.target.value.toUpperCase())}
-          placeholder="e.g. BR1, NW1"
-          className={`postcode-input ${hasError && !hasAnyValue() ? 'input-error' : ''}`}
+          placeholder="e.g. BR1, BR2, BR4, BR5, BR6, BR7"
+          className={`postcode-input ${errors.postcode ? 'input-error' : ''}`}
         />
       </div>
 

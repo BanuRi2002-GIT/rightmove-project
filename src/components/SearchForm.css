@@ -15,6 +15,13 @@
   font-weight: 700;
 }
 
+/* Required Asterisk */
+.required-asterisk {
+  color: #ef4444;
+  margin-left: 0.25rem;
+  font-weight: 700;
+}
+
 /* Error Message */
 .error-message {
   background-color: #fee2e2;
@@ -99,81 +106,6 @@
 
 .react-select__dropdown-indicator {
   color: #94a3b8;
-}
-
-/* DatePicker Styling */
-.date-picker {
-  width: 100%;
-  padding: 0.875rem;
-  border: 2px solid #e2e8f0;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  font-family: inherit;
-  color: #64748b;
-}
-
-.date-picker::placeholder {
-  color: #94a3b8;
-}
-
-.date-picker:focus {
-  outline: none;
-  border-color: #47e4f0;
-  box-shadow: 0 0 0 3px rgba(71, 228, 240, 0.1);
-}
-
-/* Error state for date picker */
-.date-picker-error {
-  border-color: #ef4444 !important;
-}
-
-.date-picker-error:focus {
-  border-color: #ef4444 !important;
-  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
-}
-
-/* React DatePicker Calendar Styling */
-.react-datepicker-wrapper {
-  width: 100%;
-}
-
-.react-datepicker__input-container {
-  width: 100%;
-}
-
-.react-datepicker {
-  font-family: inherit;
-  border: 2px solid #e2e8f0;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.react-datepicker__header {
-  background-color: #1f1235;
-  border-bottom: none;
-  border-radius: 0.5rem 0.5rem 0 0;
-}
-
-.react-datepicker__current-month,
-.react-datepicker__day-name {
-  color: #50887a;
-}
-
-.react-datepicker__day {
-  color: #1f1235;
-}
-
-.react-datepicker__day:hover {
-  background-color: #f1f5f9;
-  border-radius: 0.25rem;
-}
-
-.react-datepicker__day--selected,
-.react-datepicker__day--keyboard-selected {
-  background-color: #427d6d;
-  color: #1f1235;
-  border-radius: 0.25rem;
 }
 
 /* Postcode Input */
