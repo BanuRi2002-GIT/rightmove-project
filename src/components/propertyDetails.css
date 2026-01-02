@@ -7,7 +7,7 @@
 
 /* Back Button */
 .btn-back {
-  background-color: #64748b;
+  background-color: #87ab9f;
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -20,7 +20,7 @@
 }
 
 .btn-back:hover {
-  background-color: #475569;
+  background-color: #47695b;
   transform: translateX(-5px);
 }
 
@@ -36,13 +36,13 @@
 
 .property-title-section h1 {
   font-size: 2rem;
-  color: #1f1235;
+  color: #12352a;
   margin-bottom: 0.5rem;
 }
 
 .property-type-info {
   font-size: 1.1rem;
-  color: #64748b;
+  color: #648b7d;
 }
 
 .property-price-section {
@@ -52,13 +52,13 @@
 .property-price {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #1f1235;
+  color: #123524;
   margin-bottom: 1rem;
 }
 
 .btn-favourite {
-  background-color: #47e4f0;
-  color: #1f1235;
+  background-color: #47f09b;
+  color: #123526;
   border: none;
   padding: 0.875rem 1.5rem;
   border-radius: 0.5rem;
@@ -69,9 +69,9 @@
 }
 
 .btn-favourite:hover {
-  background-color: #36d4e0;
+  background-color: #36e08e;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(71, 228, 240, 0.3);
+  box-shadow: 0 4px 12px rgba(71, 240, 198, 0.3);
 }
 
 /* Image Gallery */
@@ -111,12 +111,12 @@
 }
 
 .thumbnail:hover {
-  border-color: #47e4f0;
+  border-color: #47f0aa;
   transform: scale(1.05);
 }
 
 .thumbnail.active {
-  border-color: #1f1235;
+  border-color: #123528;
   transform: scale(1.05);
 }
 
@@ -142,19 +142,19 @@
   cursor: pointer;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #64748b;
+  color: #648b81;
   border-bottom: 3px solid transparent;
   margin-bottom: -3px;
   transition: all 0.3s ease;
 }
 
 .react-tabs__tab:hover {
-  color: #1f1235;
+  color: #12352e;
 }
 
 .react-tabs__tab--selected {
-  color: #1f1235;
-  border-bottom: 3px solid #47e4f0;
+  color: #12352e;
+  border-bottom: 3px solid #47f0a4;
 }
 
 .react-tabs__tab:focus {
@@ -168,13 +168,13 @@
 
 .tab-content h3 {
   font-size: 1.75rem;
-  color: #1f1235;
+  color: #123528;
   margin-bottom: 1.5rem;
 }
 
 .tab-content h4 {
   font-size: 1.3rem;
-  color: #1f1235;
+  color: #123529;
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
@@ -182,7 +182,7 @@
 .property-description {
   font-size: 1.05rem;
   line-height: 1.8;
-  color: #475569;
+  color: #47695f;
 }
 
 .property-features ul {
@@ -194,12 +194,12 @@
   padding: 0.75rem 0;
   border-bottom: 1px solid #e2e8f0;
   font-size: 1rem;
-  color: #475569;
+  color: #47695a;
 }
 
 .property-features li:before {
   content: "✓ ";
-  color: #47e4f0;
+  color: #47f090;
   font-weight: bold;
   margin-right: 0.5rem;
 }
@@ -219,14 +219,14 @@
 .floor-plan-note {
   margin-top: 1rem;
   font-size: 0.9rem;
-  color: #64748b;
+  color: #648b84;
   font-style: italic;
 }
 
 /* Map */
 .map-address {
   font-size: 1.1rem;
-  color: #475569;
+  color: #47695d;
   margin-bottom: 1rem;
 }
 

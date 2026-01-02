@@ -26,12 +26,12 @@ const PropertiesList = ({ onAddToFavourites }) => {
               
               <div className="property-card-info">
                 <span className="property-bedrooms">
-                  🛏️ {property.bedrooms} Bedrooms
+                  {property.bedrooms} Bedrooms
                 </span>
                 <span className="property-tenure">{property.tenure}</span>
               </div>
               
-              <p className="property-card-location">📍 {property.location}</p>
+              <p className="property-card-location"> {property.location}</p>
               
               <p className="property-card-description">
                 {property.description.replace(/<br>/g, ' ').substring(0, 120)}...

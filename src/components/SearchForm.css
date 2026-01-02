@@ -61,16 +61,16 @@
 }
 
 .react-select__control--is-focused {
-  border-color: #905ea4 !important;
+  border-color: #5ea483 !important;
   box-shadow: 0 0 0 3px rgba(71, 228, 240, 0.1) !important;
 }
 
 .react-select__placeholder {
-  color: #94a3b8;
+  color: #94b8a8;
 }
 
 .react-select__single-value {
-  color: #64748b;
+  color: #648b79;
 }
 
 .react-select__menu {
@@ -89,8 +89,8 @@
 }
 
 .react-select__option--is-selected {
-  background-color: #47e4f0 !important;
-  color: #1f1235;
+  background-color: #4a3b0f !important;
+  color: #10421f;
 }
 
 .react-select__indicator-separator {
@@ -157,7 +157,7 @@
 
 .react-datepicker__current-month,
 .react-datepicker__day-name {
-  color: #805088;
+  color: #50887a;
 }
 
 .react-datepicker__day {
@@ -171,7 +171,7 @@
 
 .react-datepicker__day--selected,
 .react-datepicker__day--keyboard-selected {
-  background-color: #7d427c;
+  background-color: #427d6d;
   color: #1f1235;
   border-radius: 0.25rem;
 }
@@ -194,7 +194,7 @@
 
 .postcode-input:focus {
   outline: none;
-  border-color: #69416c;
+  border-color: #416c5e;
   box-shadow: 0 0 0 3px rgba(71, 228, 240, 0.1);
 }
 
@@ -236,14 +236,14 @@
 }
 
 .btn-primary {
-  background-color: #1f1235;
-  color: #5b3369;
+  background-color: #054733;
+  color: #3b866d;
 }
 
 .btn-primary:hover {
-  background-color: #2d1a4f;
+  background-color: #0e5133;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(31, 18, 53, 0.3);
+  box-shadow: 0 4px 12px rgba(34, 212, 153, 0.3);
 }
 
 .btn-secondary {

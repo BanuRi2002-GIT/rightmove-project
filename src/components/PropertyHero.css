@@ -12,7 +12,7 @@
   position: absolute;
   inset: 0;
   background-image: linear-gradient(rgba(30, 50, 90, 0.3), rgba(30, 50, 90, 0.3)), 
-                    url('https://images.unsplash.com/photo-1605146769289-440113cc3d00?q=80&w=2070');
+                    url('Images/propertyHeroBackgroundImage.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -43,7 +43,7 @@
 }
 
 .property-hero__title-highlight {
-  color: #02371c;
+  color: #82d9ac;
 }
 
 .property-hero__subtitle {

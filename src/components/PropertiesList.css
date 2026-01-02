@@ -64,7 +64,7 @@
   top: 1rem;
   right: 1rem;
   background-color: #054024;
-  color: #154630;
+  color: #509f7c;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   font-size: 0.9rem;
@@ -82,7 +82,7 @@
 .property-card-price {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #043e2a;
+  color: #3b7762;
   margin-bottom: 0.75rem;
 }
 
@@ -146,22 +146,22 @@
 
 .btn-view-details {
   background-color: #0d4621;
-  color: #2c6d52;
+  color: #91e6c2;
 }
 
 .btn-view-details:hover {
-  background-color: #0c472d;
+  background-color: #023c23;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(31, 18, 53, 0.3);
+  box-shadow: 0 4px 12px rgba(22, 192, 163, 0.3);
 }
 
 .btn-add-favourite {
-  background-color: #602d6d;
-  color: #1f1235;
+  background-color: #286a5c;
+  color: #0e0e0e;
 }
 
 .btn-add-favourite:hover {
-  background-color: #5b2e62;
+  background-color: #254b40;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(80, 3, 81, 0.3);
 }
