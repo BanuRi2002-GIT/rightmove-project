@@ -1,29 +1,3 @@
-// import React from 'react';
-// import { Link } from 'react-router-dom'; // Use Link for navigation with React Router
-// import './Header.css';
-
-// function Header ()  {
-//   return (
-//     <header className="header">
-//       <div className="logo-container">
-//         <img src="/Images/rightmove.png" alt="Logo" className="logo" />
-//         <h1>Rightmove</h1>
-//       </div>
-      
-      
-//       <nav>
-//         <ul>
-//           <li><Link to="/">Property Search</Link></li>
-//           <li><Link to="/property-list">Properties</Link></li>
-          
-//         </ul>
-//       </nav>
-//     </header>
-//   );
-// };
-
-// export default Header;
-
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
@@ -53,15 +27,10 @@ function Header() {
         {/* Logo */}
         <div className="header-logo">
           <Link to="/" className="logo-link" onClick={closeMobileMenu}>
-            
               <div className="logo-container">
-                <h1 className="logo-text">
                   <img src="/Images/rightmove.png" alt="Logo" className="logo" />
-                  <span className="logo-highlight">RightMove</span>
-                </h1>
+                      <h1 className="logo-highlight">Rightmove</h1>
               </div>
-              
-            
           </Link>
         </div>
 
@@ -86,15 +55,7 @@ function Header() {
                 Home
               </Link>
             </li>
-            <li className="nav-item">
-              <Link 
-                to="/property-list" 
-                className={`nav-link ${isActive('/property-list') ? 'active' : ''}`}
-                onClick={closeMobileMenu}
-              >
-                All Properties
-              </Link>
-            </li>
+            
             <li className="nav-item">
               <Link 
                 to="/search" 
@@ -102,6 +63,17 @@ function Header() {
                 onClick={closeMobileMenu}
               >
                 Search Properties
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link 
+                to="/property-list" 
+                className={`nav-link ${isActive('/property-list') ? 'active' : ''}`}
+                onClick={closeMobileMenu}
+              >
+
+                All Properties
               </Link>
             </li>
           </ul>

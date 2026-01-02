@@ -16,6 +16,8 @@ function SearchForm({ onSearch }) {
     postcode: ''
   });
 
+  const [hasError, setHasError] = useState(false);
+
   // Options for React Select dropdowns
   const typeOptions = [
     { value: '', label: 'Any' },
@@ -52,8 +54,31 @@ function SearchForm({ onSearch }) {
     { value: 5, label: '5+' }
   ];
 
+  // Check if at least one field has a value
+  const hasAnyValue = () => {
+    return (
+      (formData.type && formData.type.value !== '') ||
+      (formData.minPrice && formData.minPrice.value !== '') ||
+      (formData.maxPrice && formData.maxPrice.value !== '') ||
+      (formData.minBedrooms && formData.minBedrooms.value !== '') ||
+      (formData.maxBedrooms && formData.maxBedrooms.value !== '') ||
+      formData.dateFrom ||
+      formData.dateTo ||
+      formData.postcode.trim() !== ''
+    );
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // Validate that at least one field is filled
+    if (!hasAnyValue()) {
+      setHasError(true);
+      return;
+    }
+
+    // Clear error and proceed with search
+    setHasError(false);
     
     // Convert form data to search criteria
     const criteria = {
@@ -81,6 +106,7 @@ function SearchForm({ onSearch }) {
       dateTo: null,
       postcode: ''
     });
+    setHasError(false);
     onSearch({
       type: '',
       minPrice: '',
@@ -93,9 +119,35 @@ function SearchForm({ onSearch }) {
     });
   };
 
+  // Clear error when user makes any change
+  const handleChange = (field, value) => {
+    setFormData({ ...formData, [field]: value });
+    if (hasError) {
+      setHasError(false);
+    }
+  };
+
+  // Custom styles for error state
+  const getSelectStyles = (hasError) => ({
+    control: (base, state) => ({
+      ...base,
+      borderColor: hasError && !hasAnyValue() ? '#ef4444' : state.isFocused ? '#905ea4' : '#e2e8f0',
+      borderWidth: '2px',
+      '&:hover': {
+        borderColor: hasError && !hasAnyValue() ? '#ef4444' : '#cbd5e1'
+      }
+    })
+  });
+
   return (
     <form className="search-form" onSubmit={handleSubmit}>
       <h2>Search Properties</h2>
+      
+      {hasError && (
+        <div className="error-message">
+          Please fill in at least one search criterion
+        </div>
+      )}
       
       <div className="form-group">
         <label htmlFor="type">Property Type:</label>
@@ -103,10 +155,11 @@ function SearchForm({ onSearch }) {
           id="type"
           options={typeOptions}
           value={formData.type}
-          onChange={(option) => setFormData({ ...formData, type: option })}
+          onChange={(option) => handleChange('type', option)}
           placeholder="Select type..."
           className="react-select-container"
           classNamePrefix="react-select"
+          styles={getSelectStyles(hasError)}
         />
       </div>
 
@@ -117,10 +170,11 @@ function SearchForm({ onSearch }) {
             id="minPrice"
             options={priceOptions}
             value={formData.minPrice}
-            onChange={(option) => setFormData({ ...formData, minPrice: option })}
+            onChange={(option) => handleChange('minPrice', option)}
             placeholder="No min"
             className="react-select-container"
             classNamePrefix="react-select"
+            styles={getSelectStyles(hasError)}
           />
         </div>
 
@@ -130,10 +184,11 @@ function SearchForm({ onSearch }) {
             id="maxPrice"
             options={maxPriceOptions}
             value={formData.maxPrice}
-            onChange={(option) => setFormData({ ...formData, maxPrice: option })}
+            onChange={(option) => handleChange('maxPrice', option)}
             placeholder="No max"
             className="react-select-container"
             classNamePrefix="react-select"
+            styles={getSelectStyles(hasError)}
           />
         </div>
       </div>
@@ -145,10 +200,11 @@ function SearchForm({ onSearch }) {
             id="minBedrooms"
             options={bedroomOptions}
             value={formData.minBedrooms}
-            onChange={(option) => setFormData({ ...formData, minBedrooms: option })}
+            onChange={(option) => handleChange('minBedrooms', option)}
             placeholder="Any"
             className="react-select-container"
             classNamePrefix="react-select"
+            styles={getSelectStyles(hasError)}
           />
         </div>
 
@@ -158,10 +214,11 @@ function SearchForm({ onSearch }) {
             id="maxBedrooms"
             options={bedroomOptions}
             value={formData.maxBedrooms}
-            onChange={(option) => setFormData({ ...formData, maxBedrooms: option })}
+            onChange={(option) => handleChange('maxBedrooms', option)}
             placeholder="Any"
             className="react-select-container"
             classNamePrefix="react-select"
+            styles={getSelectStyles(hasError)}
           />
         </div>
       </div>
@@ -172,10 +229,10 @@ function SearchForm({ onSearch }) {
           <DatePicker
             id="dateFrom"
             selected={formData.dateFrom}
-            onChange={(date) => setFormData({ ...formData, dateFrom: date })}
+            onChange={(date) => handleChange('dateFrom', date)}
             dateFormat="dd/MM/yyyy"
             placeholderText="Select date..."
-            className="date-picker"
+            className={`date-picker ${hasError && !hasAnyValue() ? 'date-picker-error' : ''}`}
             isClearable
           />
         </div>
@@ -185,10 +242,10 @@ function SearchForm({ onSearch }) {
           <DatePicker
             id="dateTo"
             selected={formData.dateTo}
-            onChange={(date) => setFormData({ ...formData, dateTo: date })}
+            onChange={(date) => handleChange('dateTo', date)}
             dateFormat="dd/MM/yyyy"
             placeholderText="Select date..."
-            className="date-picker"
+            className={`date-picker ${hasError && !hasAnyValue() ? 'date-picker-error' : ''}`}
             isClearable
           />
         </div>
@@ -200,9 +257,9 @@ function SearchForm({ onSearch }) {
           type="text"
           id="postcode"
           value={formData.postcode}
-          onChange={(e) => setFormData({ ...formData, postcode: e.target.value.toUpperCase() })}
+          onChange={(e) => handleChange('postcode', e.target.value.toUpperCase())}
           placeholder="e.g. BR1, NW1"
-          className="postcode-input"
+          className={`postcode-input ${hasError && !hasAnyValue() ? 'input-error' : ''}`}
         />
       </div>
 

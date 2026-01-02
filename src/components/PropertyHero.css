@@ -43,11 +43,11 @@
 }
 
 .property-hero__title-highlight {
-  color: #2dd4bf;
+  color: #02371c;
 }
 
 .property-hero__subtitle {
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   color: white;
   font-weight: 300;
 }
@@ -56,7 +56,7 @@
 .property-hero__card {
   width: 100%;
   max-width: 80rem;
-  background-color: rgba(15, 23, 42, 0.95);
+  background-color: rgba(2, 43, 28, 0.95);
   border-radius: 1rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
   padding: 2rem;
@@ -85,11 +85,11 @@
 }
 
 .property-hero__tab--inactive {
-  color: #94a3b8;
+  color: #add8c6;
 }
 
 .property-hero__tab--inactive:hover {
-  color: #cbd5e1;
+  color: #6cb897;
 }
 
 .property-hero__tab--active {
@@ -160,13 +160,13 @@
 }
 
 .property-hero__input:focus {
-  outline: 2px solid #2dd4bf;
+  outline: 2px solid #20755a;
   outline-offset: 0;
 }
 
 .property-hero__search-button {
   padding: 1rem 3rem;
-  background-color: #2dd4bf;
+  background-color: #2b8d54;
   color: #0f172a;
   font-weight: bold;
   font-size: 1.125rem;
@@ -179,7 +179,7 @@
 }
 
 .property-hero__search-button:hover {
-  background-color: #14b8a6;
+  background-color: #1d7054;
   transform: translateY(-2px);
 }
 

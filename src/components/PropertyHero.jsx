@@ -28,7 +28,7 @@ export default function PropertyHero({ onSearch }) {
         {/* Heading */}
         <div className="property-hero__heading">
           <h1 className="property-hero__title">
-            <span className="property-hero__title-highlight">believe</span> in finding it
+            <span className="property-hero__title-highlight">believe in finding it</span> 
           </h1>
           <p className="property-hero__subtitle">
             with the UK's largest choice of homes
