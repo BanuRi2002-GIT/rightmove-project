@@ -63,8 +63,8 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background-color: #1f1235;
-  color: #622b73;
+  background-color: #053c1d;
+  color: #429061;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   font-size: 0.9rem;
@@ -145,25 +145,25 @@
 }
 
 .btn-view-details {
-  background-color: #1f1235;
-  color: #512457;
+  background-color: #15552b;
+  color: #61a77e;
 }
 
 .btn-view-details:hover {
-  background-color: #2d1a4f;
+  background-color: #098656;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(31, 18, 53, 0.3);
+  box-shadow: 0 4px 12px rgba(3, 98, 69, 0.3);
 }
 
 .btn-add-favourite {
-  background-color: #602d6d;
-  color: #1f1235;
+  background-color: #4bb382;
+  color: #0d5b31;
 }
 
 .btn-add-favourite:hover {
-  background-color: #5b2e62;
+  background-color: #07e9a5;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(80, 3, 81, 0.3);
+  box-shadow: 0 4px 12px rgba(2, 138, 122, 0.3);
 }
 
 /* Responsive Design */
