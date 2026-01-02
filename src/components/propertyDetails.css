@@ -57,7 +57,7 @@
 }
 
 .btn-favourite {
-  background-color: #401e47;
+  background-color: #47e4f0;
   color: #1f1235;
   border: none;
   padding: 0.875rem 1.5rem;
@@ -69,7 +69,7 @@
 }
 
 .btn-favourite:hover {
-  background-color: #4e1e5b;
+  background-color: #36d4e0;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(71, 228, 240, 0.3);
 }
@@ -199,7 +199,7 @@
 
 .property-features li:before {
   content: "✓ ";
-  color: #55275a;
+  color: #47e4f0;
   font-weight: bold;
   margin-right: 0.5rem;
 }

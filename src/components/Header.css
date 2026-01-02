@@ -2,15 +2,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 3rem;
-  background-color: #816aa7;
+  padding: 1rem 2rem;
+  background-color: #1f1235;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Header title (if you still have h1 text) */
 .header h1 {
-  font-size: 2%;
-  color: #0c0c0c;
+  font-size: 1.5rem;
+  color: #413246;
 }
 
 /* Navigation */
@@ -22,13 +22,24 @@
 
 .header nav ul li a {
   text-decoration: none;
-  color: #363737;
+  color: #5c3e66;
   font-weight: 500;
 }
 
 .header nav ul li a:hover {
   text-decoration: underline;
 }
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .logo {
+      height: 100px;
+      width: 100px;
+    }
+  }
 
 /* Responsive styles */
 @media (max-width: 1024px) {

@@ -6,10 +6,8 @@ function Header ()  {
   return (
     <header className="header">
       <div className="logo-container">
-        <img src="/Images/NestifyLogo.png" alt="Logo" className="logo" />
-      
-      
-        <h1>Nestify</h1>
+        <img src="/Images/rightmove.png" alt="Logo" className="logo" />
+        <h1>Rightmove</h1>
       </div>
       
       
