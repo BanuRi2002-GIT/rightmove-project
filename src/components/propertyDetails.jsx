@@ -12,7 +12,7 @@ const PropertyDetails = ({ onAddToFavourites }) => {
   // Find the property by ID
   const property = propertiesData.properties.find(prop => prop.id === id);
   
-  // State for image gallery
+  // State for image carousel
   const [selectedImage, setSelectedImage] = useState(0);
 
   // If property not found
@@ -27,6 +27,19 @@ const PropertyDetails = ({ onAddToFavourites }) => {
       </div>
     );
   }
+
+  // Carousel navigation functions
+  const nextImage = () => {
+    setSelectedImage((prev) => 
+      prev === property.images.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevImage = () => {
+    setSelectedImage((prev) => 
+      prev === 0 ? property.images.length - 1 : prev - 1
+    );
+  };
 
   // Extract postcode for Google Maps
   const extractPostcode = (location) => {
@@ -57,21 +70,47 @@ const PropertyDetails = ({ onAddToFavourites }) => {
             className="btn btn-favourite"
             onClick={() => onAddToFavourites(property)}
           >
-             Add to Favourites
+            ♥ Add to Favourites
           </button>
         </div>
       </div>
 
-      {/* Image Gallery */}
-      <div className="image-gallery">
-        <div className="main-image">
+      {/* Image Carousel */}
+      <div className="image-carousel">
+        <div className="carousel-container">
           <img 
             src={property.images[selectedImage]} 
             alt={`${property.location} - View ${selectedImage + 1}`}
-            className="large-image"
+            className="carousel-image"
           />
+          
+          {/* Navigation Arrows */}
+          <button className="carousel-arrow carousel-arrow-left" onClick={prevImage}>
+            ‹
+          </button>
+          <button className="carousel-arrow carousel-arrow-right" onClick={nextImage}>
+            ›
+          </button>
+
+          {/* Image Counter */}
+          <div className="image-counter">
+            {selectedImage + 1} / {property.images.length}
+          </div>
+
+          {/* Dot Indicators */}
+          <div className="carousel-dots">
+            {property.images.map((_, index) => (
+              <button
+                key={index}
+                className={`carousel-dot ${selectedImage === index ? 'active' : ''}`}
+                onClick={() => setSelectedImage(index)}
+                aria-label={`Go to image ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
         
+        {/* Thumbnail Gallery */}
         <div className="thumbnail-gallery">
           {property.images.map((image, index) => (
             <img
