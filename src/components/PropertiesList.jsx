@@ -234,7 +234,7 @@ const RemoveDropZone = ({ onDrop }) => {
 
 // Main PropertiesList Component
 const PropertiesList = ({ 
-  favourites, 
+  favourites = [], 
   onAddToFavourites, 
   onRemoveFromFavourites, 
   onClearFavourites 
