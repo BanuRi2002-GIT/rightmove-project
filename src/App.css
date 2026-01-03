@@ -1,0 +1,91 @@
+/* Add these styles to your existing CSS files */
+
+/* ============================================
+   FIX 1: Remove body/html margins and padding
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* ============================================
+   FIX 2: Update App.css
+   ============================================ */
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.main-content {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+}
+
+/* ============================================
+   FIX 3: Update PropertyHero.css
+   ============================================ */
+
+.property-hero {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.property-hero__background {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(rgba(30, 50, 90, 0.3), rgba(30, 50, 90, 0.3)), 
+                    url('Images/propertyHeroBackgroundImage.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ============================================
+   FIX 4: Update Header.css
+   ============================================ */
+
+.header {
+  background: linear-gradient(135deg, #48906b 0%, #044c24 100%);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================
+   FIX 5: Update Footer.css
+   ============================================ */
+
+.footer {
+  background-color: #0c2a21;
+  color: #a0a0a0;
+  text-align: center;
+  padding: 2.5rem 3rem;
+  margin: 0;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}

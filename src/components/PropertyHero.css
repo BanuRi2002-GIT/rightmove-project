@@ -1,0 +1,254 @@
+/* Property Hero Section Styles */
+
+.property-hero {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Background Image */
+.property-hero__background {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(30, 50, 90, 0.3), rgba(30, 50, 90, 0.3)), 
+                    url('Images/propertyHeroBackgroundImage.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Content Container */
+.property-hero__content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 3rem 1rem;
+}
+
+/* Heading Section */
+.property-hero__heading {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.property-hero__title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.property-hero__title-highlight {
+  color: #82d9ac;
+}
+
+.property-hero__subtitle {
+  font-size: 2.5rem;
+  color: white;
+  font-weight: 300;
+}
+
+/* Search Card */
+.property-hero__card {
+  width: 100%;
+  max-width: 80rem;
+  background-color: rgba(2, 43, 28, 0.95);
+  border-radius: 1rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+}
+
+/* Tabs */
+.property-hero__tabs {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #475569;
+}
+
+.property-hero__tab {
+  padding-bottom: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
+  font-family: inherit;
+}
+
+.property-hero__tab--inactive {
+  color: #add8c6;
+}
+
+.property-hero__tab--inactive:hover {
+  color: #6cb897;
+}
+
+.property-hero__tab--active {
+  color: white;
+}
+
+.property-hero__tab-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: white;
+}
+
+/* Search Section */
+.property-hero__search-section {
+  width: 100%;
+}
+
+.property-hero__search-title {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+.property-hero__search-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.property-hero__input-wrapper {
+  flex: 1;
+  position: relative;
+  width: 100%;
+}
+
+.property-hero__search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  width: 1.25rem;
+  height: 1.25rem;
+  pointer-events: none;
+}
+
+.property-hero__input {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem;
+  border-radius: 0.5rem;
+  background-color: white;
+  color: #0f172a;
+  font-size: 1.125rem;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.property-hero__input::placeholder {
+  color: #94a3b8;
+}
+
+.property-hero__input:focus {
+  outline: 2px solid #20755a;
+  outline-offset: 0;
+}
+
+.property-hero__search-button {
+  padding: 1rem 3rem;
+  background-color: #2b8d54;
+  color: #0f172a;
+  font-weight: bold;
+  font-size: 1.125rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.property-hero__search-button:hover {
+  background-color: #1d7054;
+  transform: translateY(-2px);
+}
+
+.property-hero__search-button:active {
+  transform: translateY(0);
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+  .property-hero__title {
+    font-size: 3.75rem;
+  }
+
+  .property-hero__subtitle {
+    font-size: 1.875rem;
+  }
+
+  .property-hero__search-container {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .property-hero__search-button {
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .property-hero__card {
+    padding: 1.5rem;
+  }
+
+  .property-hero__tabs {
+    gap: 1rem;
+  }
+
+  .property-hero__tab {
+    font-size: 1rem;
+  }
+
+  .property-hero__search-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .property-hero__title {
+    font-size: 2rem;
+  }
+
+  .property-hero__subtitle {
+    font-size: 1.25rem;
+  }
+
+  .property-hero__card {
+    padding: 1rem;
+  }
+
+  .property-hero__input {
+    font-size: 1rem;
+    padding: 0.875rem 0.875rem 0.875rem 2.75rem;
+  }
+
+  .property-hero__search-button {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+
+  .property-hero__search-title {
+    font-size: 1.125rem;
+  }
+}
