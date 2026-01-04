@@ -4,7 +4,7 @@ import './Footer.css';
 function Footer  ()  {
   return (
     <footer className="footer">
-      <p>© 2025 Nestify. All rights reserved.</p>
+      <p>© 2025 Rightmove. All rights reserved.</p>
     </footer>
   );
 };
